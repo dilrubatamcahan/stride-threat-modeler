@@ -1,0 +1,106 @@
+{% extends "base.html" %}
+
+{% block title %}Model Oluştur — STRIDE Tehdit Modelleme{% endblock %}
+
+{% block content %}
+<div class="page-header">
+    <h1>Tehdit Modeli Oluştur</h1>
+    <p class="page-sub">Bankacılık ağı bileşenlerini seçin, sistem otomatik STRIDE analizi yapsın.</p>
+</div>
+
+<div class="builder-layout">
+    <!-- Sol: Bileşen Seçimi -->
+    <div class="panel panel-left">
+        <h2 class="panel-title">1. Bileşenleri Seçin</h2>
+        <p class="panel-hint">Modelinize eklemek istediğiniz bileşenleri seçin.</p>
+
+        <div class="component-grid">
+            {% set icons = {
+                'web_portal': '🌐',
+                'api_gateway': '🔀',
+                'core_banking': '🏛️',
+                'database': '🗄️',
+                'atm_network': '🏧',
+                'admin_console': '⚙️',
+                'firewall': '🛡️',
+                'auth_server': '🔐',
+                'message_queue': '📨',
+                'log_server': '📋'
+            } %}
+            {% for key, label in component_labels.items() %}
+            <div class="comp-card" data-tip="{{ key }}" onclick="toggleComponent(this)">
+                <div class="comp-icon">{{ icons[key] }}</div>
+                <div class="comp-name">{{ label }}</div>
+                <div class="comp-check">✓</div>
+            </div>
+            {% endfor %}
+        </div>
+
+        <div class="model-name-row">
+            <label for="modelAdi">Model Adı</label>
+            <input type="text" id="modelAdi" placeholder="Bankacılık Ağı v1.0" maxlength="60">
+        </div>
+
+        <button class="btn-analyze" id="btnAnalyze" onclick="runAnalysis()" disabled>
+            Tehdit Analizi Başlat
+        </button>
+        <div id="analyzeError" class="error-msg" style="display:none"></div>
+    </div>
+
+    <!-- Sağ: Sonuçlar -->
+    <div class="panel panel-right" id="resultsPanel" style="display:none">
+        <div class="results-header">
+            <div>
+                <h2 class="panel-title" id="resultModelAdi">Analiz Sonuçları</h2>
+                <span class="result-date" id="resultDate"></span>
+            </div>
+            <div class="risk-badge-wrap">
+                <span class="risk-badge" id="overallRiskBadge"></span>
+            </div>
+        </div>
+
+        <!-- Özet Kartlar -->
+        <div class="summary-cards">
+            <div class="sum-card">
+                <div class="sum-val" id="sumComponents">0</div>
+                <div class="sum-label">Bileşen</div>
+            </div>
+            <div class="sum-card">
+                <div class="sum-val" id="sumThreats">0</div>
+                <div class="sum-label">Toplam Tehdit</div>
+            </div>
+            <div class="sum-card sum-card-red">
+                <div class="sum-val" id="sumCritical">0</div>
+                <div class="sum-label">Kritik</div>
+            </div>
+            <div class="sum-card sum-card-orange">
+                <div class="sum-val" id="sumHigh">0</div>
+                <div class="sum-label">Yüksek</div>
+            </div>
+        </div>
+
+        <!-- STRIDE Dağılımı -->
+        <div class="chart-section">
+            <h3>Önem Dağılımı</h3>
+            <div class="severity-bars" id="severityBars"></div>
+        </div>
+
+        <!-- Bileşen Tehdit Listesi -->
+        <div id="threatList"></div>
+
+        <button class="btn-export" onclick="exportJSON()">JSON Olarak İndir</button>
+    </div>
+</div>
+
+<!-- Loading overlay -->
+<div id="loadingOverlay" style="display:none" class="loading-overlay">
+    <div class="loading-box">
+        <div class="spinner"></div>
+        <p>Tehditler analiz ediliyor...</p>
+    </div>
+</div>
+{% endblock %}
+
+{% block scripts %}
+<script src="{{ url_for('static', filename='js/app.js') }}"></script>
+{% endblock %}

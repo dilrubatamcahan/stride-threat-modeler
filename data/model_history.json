@@ -1,0 +1,76 @@
+[
+  {
+    "model_id": "e25621e6",
+    "model_adi": "Test",
+    "tarih": "28.06.2026 16:30",
+    "bilesen_sayisi": 2,
+    "toplam_tehdit": 12,
+    "genel_risk": "Düşük",
+    "components": [
+      {
+        "id": "c1",
+        "tip": "web_portal"
+      },
+      {
+        "id": "c2",
+        "tip": "core_banking"
+      }
+    ]
+  },
+  {
+    "model_id": "7e7c79f6",
+    "model_adi": "Tam Bankacilik Modeli",
+    "tarih": "28.06.2026 16:29",
+    "bilesen_sayisi": 6,
+    "toplam_tehdit": 30,
+    "genel_risk": "Orta",
+    "components": [
+      {
+        "id": "c1",
+        "tip": "web_portal"
+      },
+      {
+        "id": "c2",
+        "tip": "core_banking"
+      },
+      {
+        "id": "c3",
+        "tip": "database"
+      },
+      {
+        "id": "c4",
+        "tip": "atm_network"
+      },
+      {
+        "id": "c5",
+        "tip": "admin_console"
+      },
+      {
+        "id": "c6",
+        "tip": "auth_server"
+      }
+    ]
+  },
+  {
+    "model_id": "41a11344",
+    "model_adi": "Test Modeli",
+    "tarih": "28.06.2026 16:29",
+    "bilesen_sayisi": 3,
+    "toplam_tehdit": 15,
+    "genel_risk": "Orta",
+    "components": [
+      {
+        "id": "c1",
+        "tip": "web_portal"
+      },
+      {
+        "id": "c2",
+        "tip": "core_banking"
+      },
+      {
+        "id": "c3",
+        "tip": "database"
+      }
+    ]
+  }
+]

@@ -1,0 +1,80 @@
+{% extends "base.html" %}
+
+{% block title %}Hakkında — STRIDE Tehdit Modelleme{% endblock %}
+
+{% block content %}
+<div class="page-header">
+    <h1>Hakkında</h1>
+    <p class="page-sub">STRIDE Tehdat Modelleme Aracı — Teknik Bilgi</p>
+</div>
+
+<div class="about-grid">
+    <div class="about-card">
+        <h2>🎯 Proje Amacı</h2>
+        <p>Bu araç, bankacılık ağı altyapısındaki bileşenlere yönelik olası güvenlik tehditlerini
+        Microsoft STRIDE metodolojisi ile otomatik olarak tanımlar ve risk skorlar.</p>
+        <p>Güvenlik mimarları ve analistlerin tehdit modelleme sürecini hızlandırmak için
+        tasarlanmıştır.</p>
+    </div>
+
+    <div class="about-card">
+        <h2>🔍 STRIDE Metodolojisi</h2>
+        <table class="stride-table">
+            <thead><tr><th>Harf</th><th>Tehdit</th><th>Açıklama</th></tr></thead>
+            <tbody>
+                <tr><td class="stride-s">S</td><td>Spoofing</td><td>Kimlik sahteciliği</td></tr>
+                <tr><td class="stride-t">T</td><td>Tampering</td><td>Veri değiştirme</td></tr>
+                <tr><td class="stride-r">R</td><td>Repudiation</td><td>İnkar edilebilirlik</td></tr>
+                <tr><td class="stride-i">I</td><td>Info Disclosure</td><td>Bilgi sızıntısı</td></tr>
+                <tr><td class="stride-d">D</td><td>Denial of Service</td><td>Hizmet reddi</td></tr>
+                <tr><td class="stride-e">E</td><td>Elevation of Privilege</td><td>Yetki yükseltme</td></tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div class="about-card">
+        <h2>📊 Risk Skorlama</h2>
+        <p>Her tehdit için <strong>Olasılık × Etki</strong> formülü kullanılır (1–5 ölçeği).</p>
+        <div class="risk-scale">
+            <div class="rs-item" style="background:#dc2626">Kritik (21–25)</div>
+            <div class="rs-item" style="background:#ea580c">Yüksek (16–20)</div>
+            <div class="rs-item" style="background:#d97706">Orta (11–15)</div>
+            <div class="rs-item" style="background:#65a30d">Düşük (6–10)</div>
+            <div class="rs-item" style="background:#16a34a">Çok Düşük (1–5)</div>
+        </div>
+    </div>
+
+    <div class="about-card">
+        <h2>🏦 Desteklenen Bileşenler</h2>
+        <ul class="comp-list">
+            <li>🌐 Müşteri Web Portalı</li>
+            <li>🔀 API Gateway</li>
+            <li>🏛️ Core Banking Sistemi</li>
+            <li>🗄️ Veritabanı Sunucusu</li>
+            <li>🏧 ATM Ağı</li>
+            <li>⚙️ Yönetim Konsolu</li>
+            <li>🛡️ Güvenlik Duvarı</li>
+            <li>🔐 Kimlik Doğrulama Sunucusu</li>
+            <li>📨 Mesaj Kuyruğu</li>
+            <li>📋 Log Sunucusu</li>
+        </ul>
+    </div>
+
+    <div class="about-card">
+        <h2>⚙️ Teknik Stack</h2>
+        <ul class="tech-list">
+            <li><strong>Backend:</strong> Python 3.x, Flask</li>
+            <li><strong>Motor:</strong> stride_engine.py (kural tabanlı, ML yok)</li>
+            <li><strong>Frontend:</strong> Vanilla JS, CSS Grid</li>
+            <li><strong>Veri:</strong> JSON (model_history.json)</li>
+        </ul>
+    </div>
+
+    <div class="about-card">
+        <h2>👩‍💻 Geliştirici</h2>
+        <p><strong>Dilruba Tamcahan</strong></p>
+        <p>Siber Güvenlik Portföy Projesi — Proje 3/6</p>
+        <p>Bankacılık ağlarında tehdit modelleme ve güvenlik analizi</p>
+    </div>
+</div>
+{% endblock %}

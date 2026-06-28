@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}STRIDE Tehdit Modelleme{% endblock %}</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-brand">
+            <span class="nav-icon">🏦</span>
+            <span class="nav-title">STRIDE Tehdit Modelleme</span>
+            <span class="nav-sub">Bankacılık Ağı Güvenlik Analizi</span>
+        </div>
+        <div class="nav-links">
+            <a href="/" class="nav-link {% if request.path == '/' %}active{% endif %}">Model Oluştur</a>
+            <a href="/gecmis" class="nav-link {% if request.path == '/gecmis' %}active{% endif %}">Geçmiş</a>
+            <a href="/hakkinda" class="nav-link {% if request.path == '/hakkinda' %}active{% endif %}">Hakkında</a>
+        </div>
+    </nav>
+
+    <main class="main-content">
+        {% block content %}{% endblock %}
+    </main>
+
+    <footer class="footer">
+        <p>STRIDE Tehdit Modelleme Aracı &mdash; Bankacılık Ağı Güvenlik Analizi &copy; 2025</p>
+    </footer>
+
+    {% block scripts %}{% endblock %}
+</body>
+</html>

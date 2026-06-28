@@ -1,0 +1,61 @@
+{% extends "base.html" %}
+
+{% block title %}Geçmiş — STRIDE Tehdit Modelleme{% endblock %}
+
+{% block content %}
+<div class="page-header">
+    <h1>Analiz Geçmişi</h1>
+    <p class="page-sub">Son 20 tehdit modeli analizi</p>
+</div>
+
+{% if kayitlar %}
+<div class="history-table-wrap">
+    <table class="history-table">
+        <thead>
+            <tr>
+                <th>Tarih</th>
+                <th>Model Adı</th>
+                <th>Bileşen</th>
+                <th>Toplam Tehdit</th>
+                <th>Genel Risk</th>
+                <th>İşlem</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for k in kayitlar %}
+            <tr>
+                <td class="td-date">{{ k.tarih }}</td>
+                <td class="td-name">{{ k.model_adi }}</td>
+                <td class="td-center">{{ k.bilesen_sayisi }}</td>
+                <td class="td-center">{{ k.toplam_tehdit }}</td>
+                <td class="td-center">
+                    <span class="risk-pill risk-{{ k.genel_risk | lower | replace(' ', '-') }}">
+                        {{ k.genel_risk }}
+                    </span>
+                </td>
+                <td class="td-center">
+                    <button class="btn-sm" onclick='reloadModel({{ k.components | tojson }}, "{{ k.model_adi }}")'>
+                        Yeniden Analiz Et
+                    </button>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% else %}
+<div class="empty-state">
+    <p>Henüz analiz geçmişi yok.</p>
+    <a href="/" class="btn-analyze" style="display:inline-block;text-decoration:none;width:auto;padding:0.6rem 2rem">Model Oluştur</a>
+</div>
+{% endif %}
+{% endblock %}
+
+{% block scripts %}
+<script>
+function reloadModel(components, adi) {
+    const params = new URLSearchParams({ components: JSON.stringify(components), model_adi: adi });
+    window.location.href = '/?' + params.toString();
+}
+</script>
+{% endblock %}
