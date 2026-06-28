@@ -19,7 +19,7 @@ pip install -r requirements.txt
 python -X utf8 app.py
 ```
 
-Tarayıcıda aç: http://127.0.0.1:5060
+Tarayıcıda aç: http://127.0.0.1:5075
 
 ## Testler
 

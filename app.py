@@ -107,5 +107,5 @@ def hakkinda():
 if __name__ == "__main__":
     os.makedirs("data", exist_ok=True)
     print("STRIDE Tehdit Modelleme Aracı başlatılıyor...")
-    print("Adres: http://127.0.0.1:5060")
-    app.run(debug=True, host="127.0.0.1", port=5060)
+    print("Adres: http://127.0.0.1:5075")
+    app.run(debug=True, host="127.0.0.1", port=5075)
